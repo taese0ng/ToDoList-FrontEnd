@@ -15,6 +15,7 @@ interface TextProps {
 
 const CtText: React.FC<TextProps> = ({ children, style, ...restProps }) => {
   return (
+    // @ts-ignore
     <Text style={style} {...restProps}>
       {children}
     </Text>
