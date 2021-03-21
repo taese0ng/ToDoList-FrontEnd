@@ -1,3 +1,3 @@
-import TestPage from './TestPage';
+import SignInPage from '@src/pages/SignInPage';
 
-export { TestPage };
+export { SignInPage };

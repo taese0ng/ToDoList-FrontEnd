@@ -13,7 +13,7 @@ interface TextProps {
   fontSize?: number;
 }
 
-export const Paragraph: React.FC<TextProps> = ({ children, style, ...restProps }) => {
+const CtText: React.FC<TextProps> = ({ children, style, ...restProps }) => {
   return (
     <Text style={style} {...restProps}>
       {children}
@@ -29,3 +29,5 @@ const Text = styled.Text<TextProps>`
   color: ${(props: TextProps) => props.color || DEFAULT_TEXT_COLOR};
   ${(props: TextProps) => props.textAlign && `text-align: ${props.textAlign}`};
 `;
+
+export default CtText;

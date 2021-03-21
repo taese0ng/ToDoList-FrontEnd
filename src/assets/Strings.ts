@@ -1,6 +1,6 @@
 const STRINGS = {
   NAVIGATION: {
-    TEST: 'test',
+    SIGN_IN: '로그인',
   },
 };
 

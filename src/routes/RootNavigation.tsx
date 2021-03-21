@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import STRINGS from '@src/assets/Strings';
-import { TestPage } from '@src/pages';
+import { SignInContainer } from '@src/containers';
 
 const RouteNavigation: React.FC = () => {
   const Stack = createStackNavigator();
@@ -10,7 +10,7 @@ const RouteNavigation: React.FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen component={TestPage} name={STRINGS.NAVIGATION.TEST} options={{ header: () => null }} />
+        <Stack.Screen component={SignInContainer} name={STRINGS.NAVIGATION.SIGN_IN} options={{ header: () => null }} />
       </Stack.Navigator>
     </NavigationContainer>
   );
