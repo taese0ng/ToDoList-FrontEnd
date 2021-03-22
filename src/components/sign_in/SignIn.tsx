@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import { CtInput, CtText } from '@src/components/necessary';
+import { CtInput, CtText, CtCheckBox } from '@src/components/necessary';
 import Color from '@src/assets/Color';
 
 const SignIn: React.FC = () => {
   const [id, setID] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [saveUser, setSaveUser] = useState<boolean>(false);
 
   const onSignIn = () => {
     console.log(password);
     console.log(id);
+  };
+
+  const moveSignUp = () => {
+    console.log('move to SignUp');
   };
 
   return (
@@ -29,7 +34,7 @@ const SignIn: React.FC = () => {
             placeholder={'아이디를 입력해주세요'}
             title={'아이디'}
             fontSize={15}
-            style={{ paddingHorizontal: 20, marginVertical: 8, width: '90%', borderRadius: 30 }}
+            style={{ paddingHorizontal: 20, marginVertical: 8, width: '100%', borderRadius: 30 }}
           />
 
           <CtInput
@@ -39,14 +44,34 @@ const SignIn: React.FC = () => {
             title={'비밀번호'}
             secureTextEntry={true}
             fontSize={15}
-            style={{ paddingHorizontal: 20, marginVertical: 5, width: '90%', borderRadius: 30 }}
+            style={{ paddingHorizontal: 20, marginVertical: 5, width: '100%', borderRadius: 30 }}
           />
 
-          <SignInBtn onPress={onSignIn}>
-            <CtText color={Color.white} fontWeight={'bold'} fontSize={15}>
-              로그인하기
-            </CtText>
-          </SignInBtn>
+          <CtCheckBox
+            animationDuration={0.3}
+            size={13}
+            fontWeight={'bold'}
+            fontSize={12}
+            value={saveUser}
+            onValueChange={setSaveUser}
+            label={'아이디 비밀번호 저장하기'}
+            boxType={'square'}
+            style={{ alignSelf: 'flex-start', marginTop: 5, marginLeft: 10 }}
+          />
+
+          <ActionBtnArea>
+            <ActionBtn onPress={moveSignUp} color={Color.black}>
+              <CtText color={Color.white} fontWeight={'bold'} fontSize={15}>
+                회원가입하기
+              </CtText>
+            </ActionBtn>
+
+            <ActionBtn onPress={onSignIn} color={Color.black}>
+              <CtText color={Color.white} fontWeight={'bold'} fontSize={15}>
+                로그인하기
+              </CtText>
+            </ActionBtn>
+          </ActionBtnArea>
         </InputContainer>
       </Body>
     </Container>
@@ -75,19 +100,26 @@ const Body = styled.View`
 
 const InputContainer = styled.View`
   width: 100%;
+  padding: 0 20px;
   align-items: center;
   justify-content: center;
   top: 12%;
 `;
 
-const SignInBtn = styled.TouchableOpacity`
+const ActionBtnArea = styled.View`
+  margin-top: 50px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+const ActionBtn = styled.TouchableOpacity<{ color?: string }>`
   width: 140px;
   height: 50px;
   border-radius: 30px;
-  background: ${Color.blue40};
+  background: ${(props) => props.color || Color.blue40};
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
 `;
 
 export default SignIn;

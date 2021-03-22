@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/native';
-import { Dimensions } from 'react-native';
+import { height } from '@src/assets/Size';
 import { CtText } from '@src/components/necessary';
 import Color from '@src/assets/Color';
 
@@ -34,7 +34,7 @@ const Container = styled.View<Props>`
 const TitleArea = styled.View`
   flex: 1;
   align-items: center;
-  top: ${Dimensions.get('window').height * 0.25};
+  top: ${height * 0.25}px;
 `;
 
 export default SignInPage;
