@@ -8,7 +8,7 @@ interface Props {
   backgroundColor: String;
 }
 
-const SignInPage: React.FC<Props> = (props) => {
+const SignInHeader: React.FC<Props> = (props) => {
   const { backgroundColor } = props;
 
   return (
@@ -37,4 +37,4 @@ const TitleArea = styled.View`
   top: ${height * 0.25}px;
 `;
 
-export default SignInPage;
+export default SignInHeader;
