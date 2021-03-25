@@ -13,6 +13,7 @@ const SignInPage: React.FC = () => {
   const navigation = useNavigation();
 
   const onSignIn = () => {
+    navigation.navigate(STRINGS.NAVIGATION.TO_DO);
     console.log(PW);
     console.log(ID);
   };
