@@ -6,7 +6,13 @@ import { CtInput, CtText } from '@src/components/necessary';
 import STRINGS from '@src/assets/Strings';
 import { useNavigation } from '@react-navigation/native';
 
-const SignUpPage: React.FC = () => {
+interface Props {
+  signUp: Function;
+}
+
+const SignUpPage: React.FC<Props> = (props) => {
+  const { signUp } = props;
+
   const navigation = useNavigation();
   const [Name, setName] = useState<string>('');
   const [ID, setID] = useState<string>('');
@@ -14,10 +20,6 @@ const SignUpPage: React.FC = () => {
   const [PWConfirm, setPWConfirm] = useState<string>('');
   const [Email, setEmail] = useState<string>('');
   const [ConfirmCode, setConfirmCode] = useState<string>('');
-
-  const SignUp = () => {
-    console.log('SignUp');
-  };
 
   const goBack = () => {
     navigation.goBack();
@@ -92,7 +94,7 @@ const SignUpPage: React.FC = () => {
                 title={'인증번호'}
                 fontSize={15}
                 style={{ paddingHorizontal: 20, marginVertical: 8, width: '100%', borderRadius: 30 }}
-                btn={{ title: '인증하기', onPress: SignUp }}
+                btn={{ title: '인증하기', onPress: () => {} }}
               />
 
               <ActionBtnArea>
@@ -102,7 +104,12 @@ const SignUpPage: React.FC = () => {
                   </CtText>
                 </ActionBtn>
 
-                <ActionBtn color={Color.black}>
+                <ActionBtn
+                  color={Color.black}
+                  onPress={() => {
+                    signUp();
+                  }}
+                >
                   <CtText color={Color.white} fontWeight={'bold'} fontSize={15}>
                     회원가입 하기
                   </CtText>
