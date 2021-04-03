@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components/native';
-import { CtCheckBox, CtText } from '@src/components/necessary';
+import { CtCheckBox } from '@src/components/necessary';
 import Color from '@src/assets/Color';
 
 interface itemProps {
@@ -16,6 +16,7 @@ interface Props {
 const To_DoItem: React.FC<Props> = (props) => {
   const { item, onChange } = props;
   const [value, setValue] = useState<boolean>(item.status || false);
+  const [todoItem, setTodoItem] = useState<string>(item.title);
 
   const onValueChange = (e: any) => {
     item.status = e;
@@ -29,14 +30,12 @@ const To_DoItem: React.FC<Props> = (props) => {
         <CtCheckBox value={value} onValueChange={onValueChange} />
 
         <TextArea>
-          <CtText
-            fontSize={17}
-            fontWeight={'bold'}
+          <TextInput
+            value={todoItem}
+            onChangeText={setTodoItem}
             color={value ? Color.gray10 : Color.black}
-            style={value && { textDecorationLine: 'line-through' }}
-          >
-            {item.title}
-          </CtText>
+            textDecorationLine={value}
+          />
         </TextArea>
       </Body>
     </Container>
@@ -59,4 +58,12 @@ const Body = styled.View`
 const TextArea = styled.View`
   padding-left: 10px;
 `;
+
+const TextInput = styled.TextInput<{ color: string; textDecorationLine: boolean }>`
+  font-size: 17px;
+  font-weight: bold;
+  color: ${(props) => props.color};
+  text-decoration-line: ${(props) => (props.textDecorationLine ? 'line-through' : 'none')};
+`;
+
 export default To_DoItem;

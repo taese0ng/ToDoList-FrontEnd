@@ -39,8 +39,9 @@ const To_DoPage: React.FC<Props> = (props) => {
         trueNum++;
       }
     });
+    const value = (((width / 100) * trueNum) / arr.length) * 100;
 
-    return (((width / 100) * trueNum) / arr.length) * 100;
+    return value === width ? value + 10 : value;
   };
 
   const percentageRef = useRef(new Animated.Value(initProgressBar())).current;
