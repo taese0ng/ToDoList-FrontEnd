@@ -49,6 +49,7 @@ const CtInput: React.FC<Props> = (props) => {
           placeholder={props.placeholder}
           placeholderTextColor={props.placeholderTextColor || Color.gray30}
           fontSize={props.fontSize}
+          fontWeight={props.fontWeight}
           color={props.color}
           secureTextEntry={props.secureTextEntry}
           btn={props.btn}

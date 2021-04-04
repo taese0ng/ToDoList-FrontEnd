@@ -29,7 +29,7 @@ const SignInPage: React.FC = () => {
         <Header />
         <Body>
           <InputContainer>
-            <CtText fontSize={30} fontWeight={'bold'} style={{ marginBottom: 5 }}>
+            <CtText fontSize={30} fontWeight={'bold'} color={Color.blue30} style={{ marginBottom: 5 }}>
               환영합니다
             </CtText>
             <CtText fontSize={15} color={Color.gray40} style={{ marginBottom: 40 }}>
@@ -41,7 +41,14 @@ const SignInPage: React.FC = () => {
               placeholder={'아이디를 입력해주세요'}
               title={'아이디'}
               fontSize={15}
-              style={{ paddingHorizontal: 20, marginVertical: 8, width: '100%', borderRadius: 30 }}
+              fontWeight={'bold'}
+              style={{
+                paddingHorizontal: 20,
+                marginVertical: 8,
+                width: '100%',
+                borderRadius: 30,
+                backgroundColor: Color.gray0,
+              }}
             />
 
             <CtInput
@@ -51,7 +58,14 @@ const SignInPage: React.FC = () => {
               title={'비밀번호'}
               secureTextEntry={true}
               fontSize={15}
-              style={{ paddingHorizontal: 20, marginVertical: 5, width: '100%', borderRadius: 30 }}
+              fontWeight={'bold'}
+              style={{
+                paddingHorizontal: 20,
+                marginVertical: 5,
+                width: '100%',
+                borderRadius: 30,
+                backgroundColor: Color.gray0,
+              }}
             />
 
             <CtCheckBox
@@ -67,13 +81,13 @@ const SignInPage: React.FC = () => {
             />
 
             <ActionBtnArea>
-              <ActionBtn onPress={moveSignUp} color={Color.black}>
+              <ActionBtn onPress={moveSignUp} color={Color.blue30}>
                 <CtText color={Color.white} fontWeight={'bold'} fontSize={15}>
                   회원가입하기
                 </CtText>
               </ActionBtn>
 
-              <ActionBtn onPress={onSignIn} color={Color.black}>
+              <ActionBtn onPress={onSignIn} color={Color.blue30}>
                 <CtText color={Color.white} fontWeight={'bold'} fontSize={15}>
                   로그인하기
                 </CtText>

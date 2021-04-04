@@ -12,6 +12,10 @@ const SignInContainer: React.FC = () => {
   useEffect(() => {
     // @ts-ignore
     sheetRef.current.snapTo(2);
+    setTimeout(() => {
+      // @ts-ignore
+      sheetRef.current.snapTo(0);
+    }, 3000);
   }, []);
 
   return (

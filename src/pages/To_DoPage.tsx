@@ -14,8 +14,9 @@ interface Props {
 const To_DoPage: React.FC<Props> = (props) => {
   const { headerColor, onCheckList } = props;
   const [scrollTop, setScrollTop] = useState<boolean>(true);
+  const bodyRef = useRef(null);
   const headerHeightRef = useRef(new Animated.Value(100)).current;
-  const [arr, setArr] = useState([
+  const [arr, setArr] = useState<Array<{ title: string; status: boolean }>>([
     { title: 'test1', status: true },
     { title: 'test2', status: true },
     { title: 'test3', status: true },
@@ -88,6 +89,13 @@ const To_DoPage: React.FC<Props> = (props) => {
     setProgressBar();
   };
 
+  const createList = async () => {
+    const newValue = { title: '', status: false };
+    await setArr([...arr, newValue]);
+    // @ts-ignore
+    bodyRef.current.scrollToEnd({ animated: true });
+  };
+
   return (
     <Container>
       <Header headerColor={headerColor} style={{ height: headerHeightRef }}>
@@ -105,11 +113,17 @@ const To_DoPage: React.FC<Props> = (props) => {
             To-Do List
           </CtText>
         )}
+        <CreateBtn onPress={createList}>
+          <CtText color={Color.white} fontSize={40} fontWeight={'bold'}>
+            +
+          </CtText>
+        </CreateBtn>
       </Header>
 
       <ProgressBar percentage={percentageRef} />
 
       <Body
+        ref={bodyRef}
         bounces={false}
         scrollEventThrottle={0}
         onScroll={(e) => {
@@ -134,6 +148,15 @@ const Header = styled(Animated.View)<{ headerColor?: string }>`
   justify-content: center;
   align-items: center;
   background-color: ${(props) => props.headerColor || Color.white};
+`;
+
+const CreateBtn = styled.TouchableOpacity`
+  position: absolute;
+  right: 10px;
+  top: 0;
+  padding: 3px 8px;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Body = styled.ScrollView`

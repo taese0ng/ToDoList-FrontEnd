@@ -17,7 +17,7 @@ const SignInHeader: React.FC<Props> = (props) => {
         <CtText fontSize={70} fontWeight={'bold'} color={Color.white}>
           To-Do
         </CtText>
-        <CtText fontSize={50} fontWeight={'bold'} color={Color.white}>
+        <CtText fontSize={30} fontWeight={'bold'} color={Color.white}>
           LIST
         </CtText>
       </TitleArea>

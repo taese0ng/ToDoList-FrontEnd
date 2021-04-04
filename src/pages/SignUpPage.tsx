@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Platform, TouchableWithoutFeedback, Keyboard, View } from 'react-native';
+import { Platform, TouchableWithoutFeedback, Keyboard, View, StyleSheet } from 'react-native';
 import styled from 'styled-components/native';
 import Color from '@src/assets/Color';
 import { CtInput, CtText } from '@src/components/necessary';
@@ -47,8 +47,9 @@ const SignUpPage: React.FC<Props> = (props) => {
                 placeholder={'아이디를 입력해주세요'}
                 title={'아이디'}
                 fontSize={15}
-                style={{ paddingHorizontal: 20, marginVertical: 8, width: '100%', borderRadius: 30 }}
-                btn={{ title: '중복검사', onPress: IDConfirm }}
+                fontWeight={'bold'}
+                style={styles.inputTag}
+                btn={{ title: '중복검사', onPress: IDConfirm, backgroundColor: Color.blue30 }}
               />
 
               <CtInput
@@ -57,7 +58,8 @@ const SignUpPage: React.FC<Props> = (props) => {
                 placeholder={'이름를 입력해주세요'}
                 title={'이름'}
                 fontSize={15}
-                style={{ paddingHorizontal: 20, marginVertical: 8, width: '100%', borderRadius: 30 }}
+                fontWeight={'bold'}
+                style={styles.inputTag}
               />
 
               <CtInput
@@ -66,7 +68,8 @@ const SignUpPage: React.FC<Props> = (props) => {
                 placeholder={'비밀번호를 입력해주세요'}
                 title={'비밀번호'}
                 fontSize={15}
-                style={{ paddingHorizontal: 20, marginVertical: 8, width: '100%', borderRadius: 30 }}
+                fontWeight={'bold'}
+                style={styles.inputTag}
               />
 
               <CtInput
@@ -75,7 +78,8 @@ const SignUpPage: React.FC<Props> = (props) => {
                 placeholder={'비밀번호 확인을 해주세요'}
                 title={'비밀번호 확인'}
                 fontSize={15}
-                style={{ paddingHorizontal: 20, marginVertical: 8, width: '100%', borderRadius: 30 }}
+                fontWeight={'bold'}
+                style={styles.inputTag}
               />
 
               <CtInput
@@ -84,7 +88,8 @@ const SignUpPage: React.FC<Props> = (props) => {
                 placeholder={'이메일을 입력 해주세요'}
                 title={'이메일'}
                 fontSize={15}
-                style={{ paddingHorizontal: 20, marginVertical: 8, width: '100%', borderRadius: 30 }}
+                fontWeight={'bold'}
+                style={styles.inputTag}
               />
 
               <CtInput
@@ -93,19 +98,20 @@ const SignUpPage: React.FC<Props> = (props) => {
                 placeholder={'인증번호를 입력해주세요'}
                 title={'인증번호'}
                 fontSize={15}
-                style={{ paddingHorizontal: 20, marginVertical: 8, width: '100%', borderRadius: 30 }}
-                btn={{ title: '인증하기', onPress: () => {} }}
+                fontWeight={'bold'}
+                style={styles.inputTag}
+                btn={{ title: '인증하기', onPress: () => {}, backgroundColor: Color.blue30 }}
               />
 
               <ActionBtnArea>
-                <ActionBtn color={Color.black} onPress={goBack}>
+                <ActionBtn color={Color.blue30} onPress={goBack}>
                   <CtText color={Color.white} fontWeight={'bold'} fontSize={15}>
                     취소하기
                   </CtText>
                 </ActionBtn>
 
                 <ActionBtn
-                  color={Color.black}
+                  color={Color.blue30}
                   onPress={() => {
                     signUp();
                   }}
@@ -122,6 +128,16 @@ const SignUpPage: React.FC<Props> = (props) => {
     </Container>
   );
 };
+
+const styles = StyleSheet.create({
+  inputTag: {
+    paddingHorizontal: 20,
+    marginVertical: 8,
+    width: '100%',
+    borderRadius: 30,
+    backgroundColor: Color.gray0,
+  },
+});
 
 const Container = styled.KeyboardAvoidingView`
   flex: 1;
